@@ -15,9 +15,11 @@ public class MainActivity extends Activity {
 	String TAG = "MainActivity";
 	boolean isActivityInForeground = false;
 	String prevoiusLogs;
-	private final File CACHE_DIR = new File("/storage/emulated/0/Android/data/com.gameofcoding." + "clicker" + "/cache");
-	TextView tvLog;
-    TextView tvLogInfo;
+	private final File CACHE_DIR = new File("/storage/emulated/0/Android/data/com.gameofcoding." + "xlogcat" + "/cache");
+	TextView tvLogTime;
+	TextView tvLogPriority;
+	TextView tvLogTag;
+	TextView tvLogMsg;
 	ScrollView mVerticalScrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,30 +36,33 @@ public class MainActivity extends Activity {
 //			});
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		tvLog = findViewById(R.id.log);
-		tvLogInfo = findViewById(R.id.logInfo);
+		tvLogTime = findViewById(R.id.logTime);
+		tvLogPriority = findViewById(R.id.logPriority);
+		tvLogTag = findViewById(R.id.logTag);
+		tvLogMsg = findViewById(R.id.logMsg);
 		mVerticalScrollView = findViewById(R.id.verticalScrollView);
 		Typeface googleSansMedium = Typeface.createFromAsset(getAssets(),
 															 "googlesans_medium.ttf");
 		Typeface googleSansBold = Typeface.createFromAsset(getAssets(),
 														   "googlesans_bold.ttf");
 		Log.init(CACHE_DIR);
-		tvLog.setTypeface(googleSansMedium);
-		tvLogInfo.setTypeface(googleSansBold);
+		tvLogTime.setTypeface(googleSansMedium);
+		tvLogPriority.setTypeface(googleSansBold);
+		tvLogTag.setTypeface(googleSansMedium);
+		tvLogMsg.setTypeface(googleSansMedium);
 		startThread();
 		reloadLogs();
 	}
 
 	private void startThread() {
 		new Thread(new Runnable() {
-
 				@Override
 				public void run() {
 					int i =0;
 					while (isActivityInForeground) {
 						try {
 							synchronized (this) {
-								wait(800);
+								wait(600);
 								reloadLogs();
 							}
 						} catch (InterruptedException e) {
@@ -71,15 +76,17 @@ public class MainActivity extends Activity {
 	public void reloadLogs() {
 		final LogManager logManager = new LogManager(CACHE_DIR);
 		logManager.spanLogs();
-		if (!logManager.getSpannedLogInfo().toString().equals(prevoiusLogs))
-			prevoiusLogs = logManager.getSpannedLogInfo().toString();
+		if (!logManager.getSpannedLogTime().toString().equals(prevoiusLogs))
+			prevoiusLogs = logManager.getSpannedLogTime().toString();
 		else
 			return;
 		runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-					tvLogInfo.setText(logManager.getSpannedLogInfo());
-					tvLog.setText(logManager.getSpannedLog());
+					tvLogTime.setText(logManager.getSpannedLogTime());
+					tvLogPriority.setText(logManager.getSpannedLogPriority());
+					tvLogTag.setText(logManager.getSpannedLogTag());
+					tvLogMsg.setText(logManager.getSpannedLogMsg());
 					mVerticalScrollView.post(new Runnable() {
 							@Override
 							public void run() {

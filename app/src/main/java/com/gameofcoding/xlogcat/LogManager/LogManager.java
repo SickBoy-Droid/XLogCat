@@ -28,8 +28,10 @@ public class LogManager {
 	public static final String NAME_EXCEP_REASON = "exception_reason";
 	public static final String NAME_EXCEP_STACK_TRACE = "exception_stack_trace";
 
-	private SpannableStringBuilder mSpannedLogInfo = new SpannableStringBuilder();
-	private SpannableStringBuilder mSpannedLog = new SpannableStringBuilder();
+	private SpannableStringBuilder mSpannedLogTime = new SpannableStringBuilder();
+	private SpannableStringBuilder mSpannedLogPriority = new SpannableStringBuilder();
+	private SpannableStringBuilder mSpannedLogTag = new SpannableStringBuilder();
+	private SpannableStringBuilder mSpannedLogMsg = new SpannableStringBuilder();
 	public LogManager(File cacheDir) {
 		this.JSONLogFile = new File(cacheDir, JSON_LOG_FILE_NAME);
 	}
@@ -97,24 +99,43 @@ public class LogManager {
 		}
 	}
 
-	public Spanned getSpannedLog() {
-		return mSpannedLog;
+	public Spanned getSpannedLogTime() {
+		return mSpannedLogTime;
 	}
-	public Spanned getSpannedLogInfo() {
-		return mSpannedLogInfo;
+	public Spanned getSpannedLogPriority() {
+		return mSpannedLogPriority;
+	}
+	public Spanned getSpannedLogTag() {
+		return mSpannedLogTag;
+	}
+	public Spanned getSpannedLogMsg() {
+		return mSpannedLogMsg;
 	}
 
-	public void addSpannedLogInfo(Spanned spannedLogInfo) {
-		if (mSpannedLogInfo != null && spannedLogInfo != null) {
-			mSpannedLogInfo.append(spannedLogInfo);
-			mSpannedLogInfo.append("\n");
+	public void addSpannedLogTime(Spanned spannedLogTime) {
+		if (mSpannedLogTime != null && spannedLogTime != null) {
+			mSpannedLogTime.append(spannedLogTime);
+			mSpannedLogTime.append("\n");
 		}
 	}
 
-	public void addSpannedLog(Spanned spannedLog) {
-		if (mSpannedLog != null && spannedLog != null) {
-			mSpannedLog.append(spannedLog);
-			mSpannedLog.append("\n");
+	public void addSpannedLogPriority(Spanned spannedLogPriority) {
+		if (mSpannedLogPriority != null && spannedLogPriority != null) {
+			mSpannedLogPriority.append(spannedLogPriority);
+			mSpannedLogPriority.append("\n");
+		}
+	}
+
+	public void addSpannedLogTag(Spanned spannedLogTag) {
+		if (mSpannedLogTag != null && spannedLogTag != null) {
+			mSpannedLogTag.append(spannedLogTag);
+			mSpannedLogTag.append("\n");
+		}
+	}
+	public void addSpannedLogMsg(Spanned spannedLogMsg) {
+		if (mSpannedLogMsg != null && spannedLogMsg != null) {
+			mSpannedLogMsg.append(spannedLogMsg);
+			mSpannedLogMsg.append("\n");
 		}
 	}
 
@@ -142,12 +163,16 @@ public class LogManager {
 
 					// Span and store log
 					Spanned[] spannedStrings = spanLogLine(date, priority, tag, msg, excepReason, excepStackTrace.trim());
-					addSpannedLogInfo(spannedStrings[0]);
-					addSpannedLog(spannedStrings[1]);
+					addSpannedLogTime(spannedStrings[0]);
+					addSpannedLogPriority(spannedStrings[1]);
+					addSpannedLogTag(spannedStrings[2]);
+					addSpannedLogMsg(spannedStrings[3]);
 				} else {
 					Spanned[] spannedStrings = spanLogLine(date, priority, tag, msg);
-					addSpannedLogInfo(spannedStrings[0]);
-					addSpannedLog(spannedStrings[1]);
+					addSpannedLogTime(spannedStrings[0]);
+					addSpannedLogPriority(spannedStrings[1]);
+					addSpannedLogTag(spannedStrings[2]);
+					addSpannedLogMsg(spannedStrings[3]);
 				}
 			}
 		} catch (Exception e) {
@@ -160,13 +185,14 @@ public class LogManager {
 	}
 
 	public Spanned[] spanLogLine(String date, int priority, String tag, String msg, String excepReason, String excepStackTrace) {
-		SpannableStringBuilder spannedlogInfo = new SpannableStringBuilder();
-		SpannableStringBuilder spannedlog = new SpannableStringBuilder();
+		SpannableStringBuilder spannedlogTime = new SpannableStringBuilder();
+		SpannableStringBuilder spannedlogPriority = new SpannableStringBuilder();
+		SpannableStringBuilder spannedlogTag = new SpannableStringBuilder();
+		SpannableStringBuilder spannedlogMsg = new SpannableStringBuilder();
 		final String doubleTab = "        ";
-		
+
 		// Span date
-		spannedlogInfo.append(setTextAppearanceSpan(date, ColorStateList.valueOf(Color.rgb(245, 245, 245))));
-		spannedlogInfo.append(doubleTab);
+		spannedlogTime.append(date);
 
 		// Span priority
 		int priorityColor = 0;
@@ -193,29 +219,36 @@ public class LogManager {
 				prioritySymbol = "D";
 				break;
 		}
-		spannedlogInfo.append(setTextAppearanceSpan(prioritySymbol, ColorStateList.valueOf(priorityColor)));
+		spannedlogPriority.append(setTextAppearanceSpan(prioritySymbol, ColorStateList.valueOf(priorityColor)));
 
 		// Span tag
-		spannedlogInfo.append(doubleTab);
-		spannedlogInfo.append(setTextAppearanceSpan(tag, ColorStateList.valueOf(priorityColor)));
-		spannedlogInfo.append(doubleTab);
-		
+		spannedlogTag.append(setTextAppearanceSpan(tag, ColorStateList.valueOf(priorityColor)));
+
 		// Span msg
-		spannedlog.append(msg);
+		spannedlogMsg.append(msg);
 
 		// Span stack trace of exception
 		if (excepReason != null && excepStackTrace != null) {
-			spannedlogInfo.append("\n");
-			spannedlog.append("\n");
-			spannedlog.append(setTextAppearanceSpan("FATAL EXCEPTION:   ", ColorStateList.valueOf(Color.rgb(239, 83, 80)), 
-													Typeface.BOLD_ITALIC));
-			spannedlog.append(excepReason);
-			spannedlog.append(excepStackTrace);
+			spannedlogTime.append("\n");
+			spannedlogPriority.append("\n");
+			spannedlogTag.append("\n");
+			spannedlogMsg.append("\n");
+			spannedlogMsg.append(setTextAppearanceSpan("FATAL EXCEPTION:   ", ColorStateList.valueOf(Color.rgb(239, 83, 80)), 
+													   Typeface.BOLD_ITALIC));
+			spannedlogMsg.append(excepReason);
+			spannedlogTime.append("\n");
+			spannedlogPriority.append("\n");
+			spannedlogTag.append("\n");
+			spannedlogMsg.append("\n");
+			spannedlogMsg.append(excepStackTrace);
 			int numLines = excepStackTrace.split("\n").length;
-			while (--numLines > 0)
-				spannedlogInfo.append("\n");
+			while (--numLines > 0) {
+				spannedlogTime.append("\n");
+				spannedlogPriority.append("\n");
+				spannedlogTag.append("\n");
+			}
 		}
-		return new Spanned[]{spannedlogInfo, spannedlog};
+		return new Spanned[]{spannedlogTime,spannedlogPriority, spannedlogTag, spannedlogMsg};
 	}
 
 	/*

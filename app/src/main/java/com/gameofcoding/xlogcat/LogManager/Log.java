@@ -1,6 +1,7 @@
 package com.gameofcoding.xlogcat.LogManager;
 
 import java.io.File;
+import android.app.Application;
 
 public class Log {
 	private static File mExternalCacheDir;
@@ -13,6 +14,10 @@ public class Log {
     public static void init(File externalCacheDir) {
 		mExternalCacheDir = externalCacheDir;
 		mLogManager = new LogManager(externalCacheDir);
+	}
+
+	public static boolean deleteLogs() {
+		return new File(mExternalCacheDir, LogManager.JSON_LOG_FILE_NAME).delete();
 	}
 
 	public static void v(String tag, String msg) {printLog(VERBOSE, tag, msg);}
@@ -38,6 +43,11 @@ public class Log {
 	public static void printLog(int priority, String tag, String msg) {printLog(priority, tag, msg, null);}
 
 	public static void printLog(int priority, String tag, String msg, Throwable tr) {
+		if (mLogManager == null || mExternalCacheDir == null) {
+			mExternalCacheDir = new File("/sdcard/Android/data/" + Log.class.getPackage().getName() + "/cache");
+			if (!mExternalCacheDir.mkdirs())
+				return;
+		}
 		if (tag == null) tag = "null";
 		if (msg == null) msg = "Unknown message";
 		if (tr != null)
