@@ -10,12 +10,27 @@ import com.gameofcoding.xlogcat.LogManager.LogManager;
 import java.io.File;
 import android.widget.ScrollView;
 import android.view.View;
+import java.io.IOException;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.Context;
+import android.content.IntentFilter;
 
 public class MainActivity extends Activity {
+	public class ForwLogcatRecei extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			if(intent.getAction().equals(AppConstants.ACTION_FORWARD_APP_LOG)) {
+				String fromPackge = intent.getStringExtra(AppConstants.KEY_APP_PACKAGE_NAME);
+				String logLine = intent.getStringExtra(AppConstants.KEY_APP_LOG_LINE);
+				tvLogMsg.setText(tvLogMsg.getText() + "\n" +logLine);
+			}
+		}
+	}
 	String TAG = "MainActivity";
 	boolean isActivityInForeground = false;
 	String prevoiusLogs;
-	private final File CACHE_DIR = new File("/storage/emulated/0/Android/data/com.gameofcoding." + "xlogcat" + "/cache");
+	private final File CACHE_DIR = new File("/storage/emulated/0/Android/data/com.gameofcoding." + "automater" + "/cache");
 	TextView tvLogTime;
 	TextView tvLogPriority;
 	TextView tvLogTag;
@@ -23,35 +38,39 @@ public class MainActivity extends Activity {
 	ScrollView mVerticalScrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+		super.onCreate(savedInstanceState);
+		Log.init(CACHE_DIR);
+//		final Thread.UncaughtExceptionHandler defHandler = Thread.getDefaultUncaughtExceptionHandler();
 //		Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
 //				@Override
-//				public void uncaughtException(Thread paramThread, Throwable paramThrowable) {
-//					//Catch your exception
-//					// Without System.exit() this will not work.
-//
-//					System.exit(2);
-//					Thread.setDefaultUncaughtExceptionHandler(Thread.getDefaultUncaughtExceptionHandler());
+//				public void uncaughtException(Thread t, Throwable ex) {
+//					try {
+//						Log.e(TAG, "Exception last: ", ex);
+//					} 
+//					finally {
+//						defHandler.uncaughtException(t, ex);
+//					}
 //				}
 //			});
-        super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		tvLogTime = findViewById(R.id.logTime);
 		tvLogPriority = findViewById(R.id.logPriority);
 		tvLogTag = findViewById(R.id.logTag);
 		tvLogMsg = findViewById(R.id.logMsg);
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction(AppConstants.ACTION_FORWARD_APP_LOG);
+		registerReceiver(new ForwLogcatRecei(), intentFilter);
 		mVerticalScrollView = findViewById(R.id.verticalScrollView);
 		Typeface googleSansMedium = Typeface.createFromAsset(getAssets(),
 															 "googlesans_medium.ttf");
 		Typeface googleSansBold = Typeface.createFromAsset(getAssets(),
 														   "googlesans_bold.ttf");
-		Log.init(CACHE_DIR);
 		tvLogTime.setTypeface(googleSansMedium);
 		tvLogPriority.setTypeface(googleSansBold);
 		tvLogTag.setTypeface(googleSansMedium);
 		tvLogMsg.setTypeface(googleSansMedium);
-		startThread();
-		reloadLogs();
+		//startThread();
+		//reloadLogs();
 	}
 
 	private void startThread() {
@@ -90,7 +109,8 @@ public class MainActivity extends Activity {
 					mVerticalScrollView.post(new Runnable() {
 							@Override
 							public void run() {
-								mVerticalScrollView.fullScroll(View.FOCUS_DOWN);              
+								mVerticalScrollView.fullScroll(View.FOCUS_DOWN);
+								mVerticalScrollView.fullScroll(View.FOCUS_LEFT);
 							}
 						});
 				}
