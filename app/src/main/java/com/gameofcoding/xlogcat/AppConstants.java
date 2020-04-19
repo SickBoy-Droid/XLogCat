@@ -1,6 +1,7 @@
 package com.gameofcoding.xlogcat;
 
 public class AppConstants {
+	public static final String LOGCAT_FILE_NAME = "Logs.txt";
 	public static final String ACTION_FORWARD_APP_LOG = "action_forward_app_log";
 	public static final String ACTION_APP_LOG = "app_log_cat";
 	public static final String KEY_APP_PACKAGE_NAME = "app_package_name";

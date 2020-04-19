@@ -1,0 +1,108 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ACTION_APP_LOG	app/src/main/java/com/gameofcoding/xlogcat/AppConstants.java	/^	public static final String ACTION_APP_LOG = "app_log_cat";$/;"	f	class:AppConstants
+ACTION_FORWARD_APP_LOG	app/src/main/java/com/gameofcoding/xlogcat/AppConstants.java	/^	public static final String ACTION_FORWARD_APP_LOG = "action_forward_app_log";$/;"	f	class:AppConstants
+AppConstants	app/src/main/java/com/gameofcoding/xlogcat/AppConstants.java	/^public class AppConstants {$/;"	c
+AppTheme	app/build/gen/com/gameofcoding/xlogcat/R.java	/^        public static final int AppTheme=0x7f050000;$/;"	f	class:R.style
+BuildConfig	app/build/gen/com/gameofcoding/xlogcat/BuildConfig.java	/^public final class BuildConfig {$/;"	c
+DEBUG	app/build/gen/com/gameofcoding/xlogcat/BuildConfig.java	/^    public final static boolean DEBUG = true;$/;"	f	class:BuildConfig
+DEBUG	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^    public static final int DEBUG = 3;$/;"	f	class:Log
+ERROR	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static final int ERROR = 6;$/;"	f	class:Log
+INFO	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^    public static final int INFO = 4;$/;"	f	class:Log
+JSONLogFile	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	private static File JSONLogFile;$/;"	f	class:LogManager	file:
+JSON_LOG_FILE_NAME	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public static final String JSON_LOG_FILE_NAME = "appLog.json";$/;"	f	class:LogManager
+KEY_APP_LOG_LINE	app/src/main/java/com/gameofcoding/xlogcat/AppConstants.java	/^	public static final String KEY_APP_LOG_LINE = "app_log_cat_line";$/;"	f	class:AppConstants
+KEY_APP_PACKAGE_NAME	app/src/main/java/com/gameofcoding/xlogcat/AppConstants.java	/^	public static final String KEY_APP_PACKAGE_NAME = "app_package_name";$/;"	f	class:AppConstants
+LOGCAT_FILE_NAME	app/src/main/java/com/gameofcoding/xlogcat/AppConstants.java	/^	public static final String LOGCAT_FILE_NAME = "Logs.txt";$/;"	f	class:AppConstants
+Log	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^public class Log {$/;"	c
+LogManager	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public LogManager(File cacheDir) {$/;"	m	class:LogManager
+LogManager	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^public class LogManager {$/;"	c
+LogcatReceiver	app/src/main/java/com/gameofcoding/xlogcat/LogcatReceiver.java	/^public class LogcatReceiver extends BroadcastReceiver {$/;"	c
+MainActivity	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^public class MainActivity extends Activity {$/;"	c
+NAME_DATE	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public static final String NAME_DATE = "date";$/;"	f	class:LogManager
+NAME_EXCEP	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public static final String NAME_EXCEP = "exception";$/;"	f	class:LogManager
+NAME_EXCEP_REASON	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public static final String NAME_EXCEP_REASON = "exception_reason";$/;"	f	class:LogManager
+NAME_EXCEP_STACK_TRACE	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public static final String NAME_EXCEP_STACK_TRACE = "exception_stack_trace";$/;"	f	class:LogManager
+NAME_MSG	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public static final String NAME_MSG = "msg";$/;"	f	class:LogManager
+NAME_PRIORITY	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public static final String NAME_PRIORITY= "priority";$/;"	f	class:LogManager
+NAME_TAG	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public static final String NAME_TAG = "tag";$/;"	f	class:LogManager
+PATTERN_PRIORITY_DEBUG	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	final Pattern PATTERN_PRIORITY_DEBUG = Pattern.compile("..-..\\\\s..:..:......\\\\s.....\\\\s../;"	f	class:MainActivity
+PATTERN_PRIORITY_ERROR	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	final Pattern PATTERN_PRIORITY_ERROR = Pattern.compile("..-..\\\\s..:..:......\\\\s.....\\\\s../;"	f	class:MainActivity
+PATTERN_PRIORITY_INFO	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	final Pattern PATTERN_PRIORITY_INFO = Pattern.compile("..-..\\\\s..:..:......\\\\s.....\\\\s.../;"	f	class:MainActivity
+PATTERN_PRIORITY_VERBOSE	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	final Pattern PATTERN_PRIORITY_VERBOSE = Pattern.compile("..-..\\\\s..:..:......\\\\s.....\\\\s/;"	f	class:MainActivity
+PATTERN_PRIORITY_WARN	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	final Pattern PATTERN_PRIORITY_WARN = Pattern.compile("..-..\\\\s..:..:......\\\\s.....\\\\s.../;"	f	class:MainActivity
+R	app/build/gen/com/gameofcoding/xlogcat/R.java	/^public final class R {$/;"	c
+TAG	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	private static String TAG = "MainActivity";$/;"	f	class:MainActivity	file:
+VERBOSE	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^    public static final int VERBOSE = 2;$/;"	f	class:Log
+WARN	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^    public static final int WARN = 5;$/;"	f	class:Log
+addLog	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public void addLog(int priority, String tag, String msg) {$/;"	m	class:LogManager
+addLog	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public void addLog(int priority, String tag, String msg, Throwable tr) {$/;"	m	class:LogManager
+addSpannedLogMsg	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public void addSpannedLogMsg(Spanned spannedLogMsg) {$/;"	m	class:LogManager
+addSpannedLogPriority	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public void addSpannedLogPriority(Spanned spannedLogPriority) {$/;"	m	class:LogManager
+addSpannedLogTag	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public void addSpannedLogTag(Spanned spannedLogTag) {$/;"	m	class:LogManager
+addSpannedLogTime	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public void addSpannedLogTime(Spanned spannedLogTime) {$/;"	m	class:LogManager
+app_name	app/build/gen/com/gameofcoding/xlogcat/R.java	/^        public static final int app_name=0x7f040000;$/;"	f	class:R.string
+app_selector	app/build/gen/com/gameofcoding/xlogcat/R.java	/^        public static final int app_selector=0x7f030000;$/;"	f	class:R.layout
+attr	app/build/gen/com/gameofcoding/xlogcat/R.java	/^    public static final class attr {$/;"	c	class:R
+com.gameofcoding.xlogcat	app/build/gen/com/gameofcoding/xlogcat/BuildConfig.java	/^package com.gameofcoding.xlogcat;$/;"	p
+com.gameofcoding.xlogcat	app/build/gen/com/gameofcoding/xlogcat/R.java	/^package com.gameofcoding.xlogcat;$/;"	p
+com.gameofcoding.xlogcat	app/src/main/java/com/gameofcoding/xlogcat/AppConstants.java	/^package com.gameofcoding.xlogcat;$/;"	p
+com.gameofcoding.xlogcat	app/src/main/java/com/gameofcoding/xlogcat/LogcatReceiver.java	/^package com.gameofcoding.xlogcat;$/;"	p
+com.gameofcoding.xlogcat	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^package com.gameofcoding.xlogcat;$/;"	p
+com.gameofcoding.xlogcat.LogManager	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^package com.gameofcoding.xlogcat.LogManager;$/;"	p
+com.gameofcoding.xlogcat.LogManager	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^package com.gameofcoding.xlogcat.LogManager;$/;"	p
+d	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void d(String tag, String msg) {printLog(DEBUG, tag, msg);}$/;"	m	class:Log
+d	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void d(String tag, String msg, Throwable tr) {printLog(DEBUG, tag, msg, tr);}$/;"	m	class:Log
+deleteLogs	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static boolean deleteLogs() {$/;"	m	class:Log
+drawable	app/build/gen/com/gameofcoding/xlogcat/R.java	/^    public static final class drawable {$/;"	c	class:R
+e	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void e(String tag, String msg) {printLog(ERROR, tag, msg);}$/;"	m	class:Log
+e	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void e(String tag, String msg, Throwable tr) {printLog(ERROR, tag, msg, tr);}$/;"	m	class:Log
+getSpannedLogMsg	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public Spanned getSpannedLogMsg() {$/;"	m	class:LogManager
+getSpannedLogPriority	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public Spanned getSpannedLogPriority() {$/;"	m	class:LogManager
+getSpannedLogTag	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public Spanned getSpannedLogTag() {$/;"	m	class:LogManager
+getSpannedLogTime	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public Spanned getSpannedLogTime() {$/;"	m	class:LogManager
+hello_world	app/build/gen/com/gameofcoding/xlogcat/R.java	/^        public static final int hello_world=0x7f040001;$/;"	f	class:R.string
+i	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void i(String tag, String msg) {printLog(INFO, tag, msg);}$/;"	m	class:Log
+i	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void i(String tag, String msg, Throwable tr) {printLog(INFO, tag, msg, tr);}$/;"	m	class:Log
+ic_launcher	app/build/gen/com/gameofcoding/xlogcat/R.java	/^        public static final int ic_launcher=0x7f020000;$/;"	f	class:R.drawable
+id	app/build/gen/com/gameofcoding/xlogcat/R.java	/^    public static final class id {$/;"	c	class:R
+init	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^    public static void init(File externalCacheDir) {$/;"	m	class:Log
+layout	app/build/gen/com/gameofcoding/xlogcat/R.java	/^    public static final class layout {$/;"	c	class:R
+mExternalCacheDir	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	private static File mExternalCacheDir;$/;"	f	class:Log	file:
+mLogManager	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	private static LogManager mLogManager;$/;"	f	class:Log	file:
+mLogs	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	private StringBuilder mLogs = new StringBuilder();$/;"	f	class:MainActivity	file:
+mLogsReader	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	private BufferedReader mLogsReader;$/;"	f	class:MainActivity	file:
+mReadLogs	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	boolean mReadLogs;$/;"	f	class:MainActivity
+mSpannedLogMsg	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	private SpannableStringBuilder mSpannedLogMsg = new SpannableStringBuilder();$/;"	f	class:LogManager	file:
+mSpannedLogPriority	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	private SpannableStringBuilder mSpannedLogPriority = new SpannableStringBuilder();$/;"	f	class:LogManager	file:
+mSpannedLogTag	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	private SpannableStringBuilder mSpannedLogTag = new SpannableStringBuilder();$/;"	f	class:LogManager	file:
+mSpannedLogTime	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	private SpannableStringBuilder mSpannedLogTime = new SpannableStringBuilder();$/;"	f	class:LogManager	file:
+mWebView	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	private WebView mWebView;$/;"	f	class:MainActivity	file:
+main	app/build/gen/com/gameofcoding/xlogcat/R.java	/^        public static final int main=0x7f030001;$/;"	f	class:R.layout
+onCreate	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^    protected void onCreate(Bundle savedInstanceState) {$/;"	m	class:MainActivity
+onDestroy	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	protected void onDestroy() {$/;"	m	class:MainActivity
+onPause	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	protected void onPause() {$/;"	m	class:MainActivity
+onReceive	app/src/main/java/com/gameofcoding/xlogcat/LogcatReceiver.java	/^	public void onReceive(Context context, Intent intent) {$/;"	m	class:LogcatReceiver
+onResume	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	protected void onResume() {$/;"	m	class:MainActivity
+printLog	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void printLog(int priority, String tag, String msg) {printLog(priority, tag, msg,/;"	m	class:Log
+printLog	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void printLog(int priority, String tag, String msg, Throwable tr) {$/;"	m	class:Log
+readJSONLogFile	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public JSONArray readJSONLogFile() {$/;"	m	class:LogManager
+setTextAppearanceSpan	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public static Spanned setTextAppearanceSpan(String source,$/;"	m	class:LogManager
+spanLogLine	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public Spanned[] spanLogLine(String date, int priority, String tag, String msg) {$/;"	m	class:LogManager
+spanLogLine	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public Spanned[] spanLogLine(String date, int priority, String tag, String msg, String excepRea/;"	m	class:LogManager
+spanLogs	app/src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java	/^	public void spanLogs() {$/;"	m	class:LogManager
+startReadingLogs	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	public void startReadingLogs() {$/;"	m	class:MainActivity
+stopReadingLogs	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	public void stopReadingLogs() {$/;"	m	class:MainActivity
+string	app/build/gen/com/gameofcoding/xlogcat/R.java	/^    public static final class string {$/;"	c	class:R
+style	app/build/gen/com/gameofcoding/xlogcat/R.java	/^    public static final class style {$/;"	c	class:R
+updateLogs	app/src/main/java/com/gameofcoding/xlogcat/MainActivity.java	/^	private void updateLogs() {$/;"	m	class:MainActivity	file:
+v	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void v(String tag, String msg) {printLog(VERBOSE, tag, msg);}$/;"	m	class:Log
+v	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void v(String tag, String msg, Throwable tr) {printLog(VERBOSE, tag, msg, tr);}$/;"	m	class:Log
+w	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void w(String tag, String msg) {printLog(WARN, tag, msg);}$/;"	m	class:Log
+w	app/src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java	/^	public static void w(String tag, String msg, Throwable tr) {printLog(WARN, tag, msg, tr);}$/;"	m	class:Log
+webView	app/build/gen/com/gameofcoding/xlogcat/R.java	/^        public static final int webView=0x7f060000;$/;"	f	class:R.id

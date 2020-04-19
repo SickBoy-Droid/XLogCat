@@ -15,118 +15,126 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.Context;
 import android.content.IntentFilter;
+import android.webkit.WebView;
+import org.apache.http.util.EncodingUtils;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import android.text.Html;
+import android.text.Spanned;
+import android.text.SpannedString;
+import java.util.regex.Pattern;
+import java.io.FileNotFoundException;
 
 public class MainActivity extends Activity {
-	public class ForwLogcatRecei extends BroadcastReceiver {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			if(intent.getAction().equals(AppConstants.ACTION_FORWARD_APP_LOG)) {
-				String fromPackge = intent.getStringExtra(AppConstants.KEY_APP_PACKAGE_NAME);
-				String logLine = intent.getStringExtra(AppConstants.KEY_APP_LOG_LINE);
-				tvLogMsg.setText(tvLogMsg.getText() + "\n" +logLine);
+    private static String TAG = "MainActivity";
+    final Pattern PATTERN_PRIORITY_VERBOSE = Pattern.compile("..-..\\s..:..:......\\s.....\\s.....\\sV\\s.*");
+    final Pattern PATTERN_PRIORITY_DEBUG = Pattern.compile("..-..\\s..:..:......\\s.....\\s.....\\sD\\s.*");
+    final Pattern PATTERN_PRIORITY_INFO = Pattern.compile("..-..\\s..:..:......\\s.....\\s.....\\sI\\s.*");
+    final Pattern PATTERN_PRIORITY_WARN = Pattern.compile("..-..\\s..:..:......\\s.....\\s.....\\sW\\s.*");
+    final Pattern PATTERN_PRIORITY_ERROR = Pattern.compile("..-..\\s..:..:......\\s.....\\s.....\\sE\\s.*");
+    private boolean mShouldReadLogs;
+    private StringBuilder mLogs = new StringBuilder();
+    private BufferedReader mLogsReader;
+    private WebView mWebView;
+
+    private Thread mLogsReader = new Thread(new Runnable() {
+	    @Override
+	    public void run() {	
+		try {
+		    if (mLogsReader == null) {
+			FileReader fileReader = new FileReader(new File(getExternalCacheDir(), AppConstants.LOGCAT_FILE_NAME));
+			mLogsReader = new BufferedReader(fileReader);
+		    }
+		    while (mShouldReadLogs) {
+			String logLine = mLogsReader.readLine();
+			if (logLine != null) {
+			    mLogs.append(toHtml(logLine));
+			    updateLogs();
 			}
+		    }
+		} catch (Throwable e) {
+		    showToast(e.toString());
 		}
-	}
-	String TAG = "MainActivity";
-	boolean isActivityInForeground = false;
-	String prevoiusLogs;
-	private final File CACHE_DIR = new File("/storage/emulated/0/Android/data/com.gameofcoding." + "automater" + "/cache");
-	TextView tvLogTime;
-	TextView tvLogPriority;
-	TextView tvLogTag;
-	TextView tvLogMsg;
-	ScrollView mVerticalScrollView;
+	    }
+	});
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		Log.init(CACHE_DIR);
-//		final Thread.UncaughtExceptionHandler defHandler = Thread.getDefaultUncaughtExceptionHandler();
-//		Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-//				@Override
-//				public void uncaughtException(Thread t, Throwable ex) {
-//					try {
-//						Log.e(TAG, "Exception last: ", ex);
-//					} 
-//					finally {
-//						defHandler.uncaughtException(t, ex);
-//					}
-//				}
-//			});
-		setContentView(R.layout.main);
-		tvLogTime = findViewById(R.id.logTime);
-		tvLogPriority = findViewById(R.id.logPriority);
-		tvLogTag = findViewById(R.id.logTag);
-		tvLogMsg = findViewById(R.id.logMsg);
-		IntentFilter intentFilter = new IntentFilter();
-		intentFilter.addAction(AppConstants.ACTION_FORWARD_APP_LOG);
-		registerReceiver(new ForwLogcatRecei(), intentFilter);
-		mVerticalScrollView = findViewById(R.id.verticalScrollView);
-		Typeface googleSansMedium = Typeface.createFromAsset(getAssets(),
-															 "googlesans_medium.ttf");
-		Typeface googleSansBold = Typeface.createFromAsset(getAssets(),
-														   "googlesans_bold.ttf");
-		tvLogTime.setTypeface(googleSansMedium);
-		tvLogPriority.setTypeface(googleSansBold);
-		tvLogTag.setTypeface(googleSansMedium);
-		tvLogMsg.setTypeface(googleSansMedium);
-		//startThread();
-		//reloadLogs();
-	}
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.main);
+	mWebView = findViewById(R.id.webView);
+	Typeface googleSansMedium = Typeface.createFromAsset(getAssets(),
+							     "googlesans_medium.ttf");
+	Typeface googleSansBold = Typeface.createFromAsset(getAssets(),
+							   "googlesans_bold.ttf");
+    }
 
-	private void startThread() {
-		new Thread(new Runnable() {
-				@Override
-				public void run() {
-					int i =0;
-					while (isActivityInForeground) {
-						try {
-							synchronized (this) {
-								wait(600);
-								reloadLogs();
-							}
-						} catch (InterruptedException e) {
-							Log.e(TAG, "Exception ocurred.", e);
-						}
-					}
-				}
-			}).start();
-	}
+    private void updateLogs() {
+	runOnUiThread(new Runnable() {
+		@Override
+		public void run() {
+		    mWebView.loadData(mLogs.toString(), "text/html", "UTF-8");
+		}
+	    });
+    }
 
-	public void reloadLogs() {
-		final LogManager logManager = new LogManager(CACHE_DIR);
-		logManager.spanLogs();
-		if (!logManager.getSpannedLogTime().toString().equals(prevoiusLogs))
-			prevoiusLogs = logManager.getSpannedLogTime().toString();
-		else
-			return;
-		runOnUiThread(new Runnable() {
-				@Override
-				public void run() {
-					tvLogTime.setText(logManager.getSpannedLogTime());
-					tvLogPriority.setText(logManager.getSpannedLogPriority());
-					tvLogTag.setText(logManager.getSpannedLogTag());
-					tvLogMsg.setText(logManager.getSpannedLogMsg());
-					mVerticalScrollView.post(new Runnable() {
-							@Override
-							public void run() {
-								mVerticalScrollView.fullScroll(View.FOCUS_DOWN);
-								mVerticalScrollView.fullScroll(View.FOCUS_LEFT);
-							}
-						});
-				}
-			});
+    public void startReadingLogs() {
+	mShouldReadLogs = true;
+	if(!mLogsReader.isAlive()) {
+	    mLogsReader.start();
 	}
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		isActivityInForeground = true;
-		startThread();
+    private String toHtml(String logLine) {
+	String color = "black";
+	if (PATTERN_PRIORITY_VERBOSE.matcher(logLine).matches()) {
+	    color = "#FF1744";
+	} else if (PATTERN_PRIORITY_DEBUG.matcher(logLine).matches()) {
+	    color = "#FF1744";
+	} else if (PATTERN_PRIORITY_INFO.matcher(logLine).matches()) {
+	    color = "#FF1744";
+	} else if (PATTERN_PRIORITY_WARN.matcher(logLine).matches()) {
+	    color = "#FF1744";
+	} else if (PATTERN_PRIORITY_ERROR.matcher(logLine).matches()) {
+	    color = "#FF1744";
 	}
+	logLine = "<p style=\"color:blue\">" + logLine + "</p>";
+	return logLine;
+    }
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		isActivityInForeground = false;
+    public void showToast(final String msg) {
+	runOnUiThread(new Runnable() {
+		@Override
+		public void run() {
+		    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+		}
+	    });
+    }
+    @Override
+    protected void onPause() {
+	super.onPause();
+	stopReadingLogs();
+    }
+
+    @Override
+    protected void onResume() {
+	super.onResume();
+	startReadingLogs();
+    }
+
+    public void stopReadingLogs() {
+	mShouldReadLogs = false;
+    }
+
+    @Override
+    protected void onDestroy() {
+	try {
+	    if (mLogsReader != null)
+		mLogsReader.close();
+	} catch (IOException e) {
+	    e.printStackTrace();
 	}
+	super.onDestroy();
+    }
 }

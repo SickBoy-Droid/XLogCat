@@ -1,54 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<HorizontalScrollView
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/verticalScrollView"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:fillViewport="true">
-	<HorizontalScrollView
+	android:layout_height="match_parent">
+	<WebView
+		android:id="@+id/webView"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		>
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent">
-			<TextView
-				android:id="@+id/logTime"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:textColor="#f5f5f5"
-				android:textIsSelectable="true"/>
-			<View
-				android:layout_width="30dp"
-				android:layout_height="match_parent"/>
-			<TextView
-				android:id="@+id/logPriority"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:gravity="center_horizontal"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:textIsSelectable="true"/>
-			<View
-				android:layout_width="40dp"
-				android:layout_height="match_parent"/>
-			<TextView
-				android:id="@+id/logTag"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:textIsSelectable="true"/>
-			<View
-				android:layout_width="40dp"
-				android:layout_height="match_parent"/>
-			<TextView
-				android:id="@+id/logMsg"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:maxWidth="900dp"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:textColor="#EEEEEE"
-				android:textIsSelectable="true"/>
-		</LinearLayout>
-	</HorizontalScrollView>
-</ScrollView>
+		android:layout_height="match_parent"/>
+</HorizontalScrollView>

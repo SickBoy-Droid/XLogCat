@@ -1,0 +1,317 @@
+
+../app,0
+
+src/main/java/com/gameofcoding/xlogcat/MainActivity.java,765
+public class MainActivity 29,859
+	private static String TAG 30,904
+	final Pattern PATTERN_PRIORITY_VERBOSE 31,949
+	final Pattern PATTERN_PRIORITY_DEBUG 32,1057
+	final Pattern PATTERN_PRIORITY_INFO 33,1163
+	final Pattern PATTERN_PRIORITY_WARN 34,1268
+	final Pattern PATTERN_PRIORITY_ERROR 35,1373
+	boolean mReadLogs;36,1479
+	private StringBuilder mLogs 37,1499
+	private BufferedReader mLogsReader;38,1551
+	private WebView mWebView;39,1588
+	protected void onCreate(41,1626
+	private void updateLogs(51,2013
+	public void startReadingLogs(60,2194
+	private String toHtml(86,2872
+	public void showToast(103,3457
+	protected void onPause(113,3676
+	protected void onResume(119,3759
+	public void stopReadingLogs(124,3834
+	protected void onDestroy(129,3903
+
+src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java,782
+public class Log 6,100
+	private static File mExternalCacheDir;7,119
+	private static LogManager mLogManager;8,159
+    public static final int VERBOSE 9,199
+    public static final int DEBUG 10,240
+    public static final int INFO 11,279
+    public static final int WARN 12,317
+	public static final int ERROR 13,355
+    public static void init(14,391
+	public static boolean deleteLogs(19,538
+	public static void v(23,658
+	public static void v(25,736
+	public static void d(27,832
+	public static void d(29,908
+	public static void i(31,1002
+	public static void i(33,1077
+	public static void w(35,1170
+	public static void w(37,1245
+	public static void e(39,1338
+	public static void e(41,1414
+	public static void printLog(43,1508
+	public static void printLog(45,1614
+
+src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java,1455
+public class LogManager 20,559
+	private static File JSONLogFile;21,585
+	public static final String JSON_LOG_FILE_NAME 22,619
+	public static final String NAME_DATE 23,683
+	public static final String NAME_PRIORITY=24,731
+	public static final String NAME_TAG 25,786
+	public static final String NAME_MSG 26,832
+	public static final String NAME_EXCEP 27,878
+	public static final String NAME_EXCEP_REASON 28,932
+	public static final String NAME_EXCEP_STACK_TRACE 29,1000
+	private SpannableStringBuilder mSpannedLogTime 31,1079
+	private SpannableStringBuilder mSpannedLogPriority 32,1159
+	private SpannableStringBuilder mSpannedLogTag 33,1243
+	private SpannableStringBuilder mSpannedLogMsg 34,1322
+	public LogManager(35,1401
+	public void addLog(39,1502
+	public void addLog(43,1602
+	public JSONArray readJSONLogFile(82,3051
+	public Spanned getSpannedLogTime(102,3527
+	public Spanned getSpannedLogPriority(105,3594
+	public Spanned getSpannedLogTag(108,3669
+	public Spanned getSpannedLogMsg(111,3734
+	public void addSpannedLogTime(115,3800
+	public void addSpannedLogPriority(122,4000
+	public void addSpannedLogTag(129,4228
+	public void addSpannedLogMsg(135,4420
+	public void spanLogs(142,4613
+	public Spanned[] spanLogLine(183,6249
+	public Spanned[] spanLogLine(187,6396
+	public static Spanned setTextAppearanceSpan(258,8810
+	public static Spanned setTextAppearanceSpan(268,9172
+	public static Spanned setTextAppearanceSpan(286,9808
+
+src/main/java/com/gameofcoding/xlogcat/LogcatReceiver.java,67
+public class LogcatReceiver 10,247
+	public void onReceive(13,315
+
+src/main/java/com/gameofcoding/xlogcat/AppConstants.java,299
+public class AppConstants 3,35
+	public static final String LOGCAT_FILE_NAME 4,63
+	public static final String ACTION_FORWARD_APP_LOG 5,122
+	public static final String ACTION_APP_LOG 6,201
+	public static final String KEY_APP_PACKAGE_NAME 7,261
+	public static final String KEY_APP_LOG_LINE 8,332
+
+build/gen/com/gameofcoding/xlogcat/BuildConfig.java,82
+public final class BuildConfig 4,86
+    public final static boolean DEBUG 5,119
+
+build/gen/com/gameofcoding/xlogcat/R.java,294
+public final class R 10,217
+    public static final class attr 11,240
+    public static final class drawable 13,283
+    public static final class id 16,386
+    public static final class layout 19,479
+    public static final class string 23,630
+    public static final class style 27,784
+
+src/main/java/com/gameofcoding/xlogcat/MainActivity.java,765
+public class MainActivity 29,859
+	private static String TAG 30,904
+	final Pattern PATTERN_PRIORITY_VERBOSE 31,949
+	final Pattern PATTERN_PRIORITY_DEBUG 32,1057
+	final Pattern PATTERN_PRIORITY_INFO 33,1163
+	final Pattern PATTERN_PRIORITY_WARN 34,1268
+	final Pattern PATTERN_PRIORITY_ERROR 35,1373
+	boolean mReadLogs;36,1479
+	private StringBuilder mLogs 37,1499
+	private BufferedReader mLogsReader;38,1551
+	private WebView mWebView;39,1588
+	protected void onCreate(41,1626
+	private void updateLogs(51,2013
+	public void startReadingLogs(60,2194
+	private String toHtml(86,2872
+	public void showToast(103,3457
+	protected void onPause(113,3676
+	protected void onResume(119,3759
+	public void stopReadingLogs(124,3834
+	protected void onDestroy(129,3903
+
+src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java,782
+public class Log 6,100
+	private static File mExternalCacheDir;7,119
+	private static LogManager mLogManager;8,159
+    public static final int VERBOSE 9,199
+    public static final int DEBUG 10,240
+    public static final int INFO 11,279
+    public static final int WARN 12,317
+	public static final int ERROR 13,355
+    public static void init(14,391
+	public static boolean deleteLogs(19,538
+	public static void v(23,658
+	public static void v(25,736
+	public static void d(27,832
+	public static void d(29,908
+	public static void i(31,1002
+	public static void i(33,1077
+	public static void w(35,1170
+	public static void w(37,1245
+	public static void e(39,1338
+	public static void e(41,1414
+	public static void printLog(43,1508
+	public static void printLog(45,1614
+
+src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java,1455
+public class LogManager 20,559
+	private static File JSONLogFile;21,585
+	public static final String JSON_LOG_FILE_NAME 22,619
+	public static final String NAME_DATE 23,683
+	public static final String NAME_PRIORITY=24,731
+	public static final String NAME_TAG 25,786
+	public static final String NAME_MSG 26,832
+	public static final String NAME_EXCEP 27,878
+	public static final String NAME_EXCEP_REASON 28,932
+	public static final String NAME_EXCEP_STACK_TRACE 29,1000
+	private SpannableStringBuilder mSpannedLogTime 31,1079
+	private SpannableStringBuilder mSpannedLogPriority 32,1159
+	private SpannableStringBuilder mSpannedLogTag 33,1243
+	private SpannableStringBuilder mSpannedLogMsg 34,1322
+	public LogManager(35,1401
+	public void addLog(39,1502
+	public void addLog(43,1602
+	public JSONArray readJSONLogFile(82,3051
+	public Spanned getSpannedLogTime(102,3527
+	public Spanned getSpannedLogPriority(105,3594
+	public Spanned getSpannedLogTag(108,3669
+	public Spanned getSpannedLogMsg(111,3734
+	public void addSpannedLogTime(115,3800
+	public void addSpannedLogPriority(122,4000
+	public void addSpannedLogTag(129,4228
+	public void addSpannedLogMsg(135,4420
+	public void spanLogs(142,4613
+	public Spanned[] spanLogLine(183,6249
+	public Spanned[] spanLogLine(187,6396
+	public static Spanned setTextAppearanceSpan(258,8810
+	public static Spanned setTextAppearanceSpan(268,9172
+	public static Spanned setTextAppearanceSpan(286,9808
+
+src/main/java/com/gameofcoding/xlogcat/LogcatReceiver.java,67
+public class LogcatReceiver 10,247
+	public void onReceive(13,315
+
+src/main/java/com/gameofcoding/xlogcat/AppConstants.java,299
+public class AppConstants 3,35
+	public static final String LOGCAT_FILE_NAME 4,63
+	public static final String ACTION_FORWARD_APP_LOG 5,122
+	public static final String ACTION_APP_LOG 6,201
+	public static final String KEY_APP_PACKAGE_NAME 7,261
+	public static final String KEY_APP_LOG_LINE 8,332
+
+build/gen/com/gameofcoding/xlogcat/BuildConfig.java,82
+public final class BuildConfig 4,86
+    public final static boolean DEBUG 5,119
+
+build/gen/com/gameofcoding/xlogcat/R.java,294
+public final class R 10,217
+    public static final class attr 11,240
+    public static final class drawable 13,283
+    public static final class id 16,386
+    public static final class layout 19,479
+    public static final class string 23,630
+    public static final class style 27,784
+
+src/main/java/com/gameofcoding/xlogcat/MainActivity.java,765
+public class MainActivity 29,859
+	private static String TAG 30,904
+	final Pattern PATTERN_PRIORITY_VERBOSE 31,949
+	final Pattern PATTERN_PRIORITY_DEBUG 32,1057
+	final Pattern PATTERN_PRIORITY_INFO 33,1163
+	final Pattern PATTERN_PRIORITY_WARN 34,1268
+	final Pattern PATTERN_PRIORITY_ERROR 35,1373
+	boolean mReadLogs;36,1479
+	private StringBuilder mLogs 37,1499
+	private BufferedReader mLogsReader;38,1551
+	private WebView mWebView;39,1588
+	protected void onCreate(41,1626
+	private void updateLogs(51,2013
+	public void startReadingLogs(60,2194
+	private String toHtml(86,2872
+	public void showToast(103,3457
+	protected void onPause(113,3676
+	protected void onResume(119,3759
+	public void stopReadingLogs(124,3834
+	protected void onDestroy(129,3903
+
+src/main/java/com/gameofcoding/xlogcat/LogManager/Log.java,782
+public class Log 6,100
+	private static File mExternalCacheDir;7,119
+	private static LogManager mLogManager;8,159
+    public static final int VERBOSE 9,199
+    public static final int DEBUG 10,240
+    public static final int INFO 11,279
+    public static final int WARN 12,317
+	public static final int ERROR 13,355
+    public static void init(14,391
+	public static boolean deleteLogs(19,538
+	public static void v(23,658
+	public static void v(25,736
+	public static void d(27,832
+	public static void d(29,908
+	public static void i(31,1002
+	public static void i(33,1077
+	public static void w(35,1170
+	public static void w(37,1245
+	public static void e(39,1338
+	public static void e(41,1414
+	public static void printLog(43,1508
+	public static void printLog(45,1614
+
+src/main/java/com/gameofcoding/xlogcat/LogManager/LogManager.java,1455
+public class LogManager 20,559
+	private static File JSONLogFile;21,585
+	public static final String JSON_LOG_FILE_NAME 22,619
+	public static final String NAME_DATE 23,683
+	public static final String NAME_PRIORITY=24,731
+	public static final String NAME_TAG 25,786
+	public static final String NAME_MSG 26,832
+	public static final String NAME_EXCEP 27,878
+	public static final String NAME_EXCEP_REASON 28,932
+	public static final String NAME_EXCEP_STACK_TRACE 29,1000
+	private SpannableStringBuilder mSpannedLogTime 31,1079
+	private SpannableStringBuilder mSpannedLogPriority 32,1159
+	private SpannableStringBuilder mSpannedLogTag 33,1243
+	private SpannableStringBuilder mSpannedLogMsg 34,1322
+	public LogManager(35,1401
+	public void addLog(39,1502
+	public void addLog(43,1602
+	public JSONArray readJSONLogFile(82,3051
+	public Spanned getSpannedLogTime(102,3527
+	public Spanned getSpannedLogPriority(105,3594
+	public Spanned getSpannedLogTag(108,3669
+	public Spanned getSpannedLogMsg(111,3734
+	public void addSpannedLogTime(115,3800
+	public void addSpannedLogPriority(122,4000
+	public void addSpannedLogTag(129,4228
+	public void addSpannedLogMsg(135,4420
+	public void spanLogs(142,4613
+	public Spanned[] spanLogLine(183,6249
+	public Spanned[] spanLogLine(187,6396
+	public static Spanned setTextAppearanceSpan(258,8810
+	public static Spanned setTextAppearanceSpan(268,9172
+	public static Spanned setTextAppearanceSpan(286,9808
+
+src/main/java/com/gameofcoding/xlogcat/LogcatReceiver.java,67
+public class LogcatReceiver 10,247
+	public void onReceive(13,315
+
+src/main/java/com/gameofcoding/xlogcat/AppConstants.java,299
+public class AppConstants 3,35
+	public static final String LOGCAT_FILE_NAME 4,63
+	public static final String ACTION_FORWARD_APP_LOG 5,122
+	public static final String ACTION_APP_LOG 6,201
+	public static final String KEY_APP_PACKAGE_NAME 7,261
+	public static final String KEY_APP_LOG_LINE 8,332
+
+build/gen/com/gameofcoding/xlogcat/BuildConfig.java,82
+public final class BuildConfig 4,86
+    public final static boolean DEBUG 5,119
+
+build/gen/com/gameofcoding/xlogcat/R.java,294
+public final class R 10,217
+    public static final class attr 11,240
+    public static final class drawable 13,283
+    public static final class id 16,386
+    public static final class layout 19,479
+    public static final class string 23,630
+    public static final class style 27,784
